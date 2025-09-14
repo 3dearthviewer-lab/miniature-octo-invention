@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stickman Loader</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #000;
+            color: #fff;
+            font-family: sans-serif;
+            flex-direction: column;
+        }
+        canvas {
+            border: 1px solid white;
+            background: #222;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loadingText">Loading...</div>
+    <canvas id="stickmanCanvas" width="300" height="400" style="display:none;"></canvas>
+
+    <script>
+        // Wait 2 seconds to simulate loading
+        setTimeout(() => {
+            document.getElementById('loadingText').style.display = 'none';
+            const canvas = document.getElementById('stickmanCanvas');
+            canvas.style.display = 'block';
+            const ctx = canvas.getContext('2d');
+
+            // Draw stickman
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 3;
+
+            // Head
+            ctx.beginPath();
+            ctx.arc(150, 50, 20, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Body
+            ctx.beginPath();
+            ctx.moveTo(150, 70);
+            ctx.lineTo(150, 150);
+            ctx.stroke();
+
+            // Arms
+            ctx.beginPath();
+            ctx.moveTo(150, 90);
+            ctx.lineTo(120, 120);
+            ctx.moveTo(150, 90);
+            ctx.lineTo(180, 120);
+            ctx.stroke();
+
+            // Legs
+            ctx.beginPath();
+            ctx.moveTo(150, 150);
+            ctx.lineTo(120, 200);
+            ctx.moveTo(150, 150);
+            ctx.lineTo(180, 200);
+            ctx.stroke();
+
+        }, 2000); // 2 second loading
+    </script>
+
+</body>
+</html>
